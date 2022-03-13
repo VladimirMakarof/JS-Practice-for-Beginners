@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="image/x-icon" rel="shortcut icon" href="/img/file_type_js.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/shades-of-purple.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="main_title">Практика JavaScript для новичков</h1>
+
+  <!-- Task 1 -->
+  <div class="container">
+
+
+    <div id="task1">
+      <h2 class="title">1. Даны 3 инпута и кнопка. По нажатию на кнопку получите числа, стоящие в этих инпутах и
+        запишите их
+        сумму в четвертый инпут.</h2>
+
+      <input type="text" name="inputNumber" value="1">
+      <input type="text" name="inputNumber" value="1">
+      <input type="text" name="inputNumber" value="1">
+      <button>Результат</button>
+      <input type="text" name="result" value="результат сложения">
+
+    </div>
+
+    <pre>
+  <code class="javascript">
+    let input = document.querySelectorAll('#task1 input[name=inputNumber]');
+    let btn = document.querySelector('#task1 button');
+    let result = document.querySelector('#task1 input[name=result]');
+
+
+    btn.addEventListener('click', resultBtn);
+
+    function resultBtn() {
+    let inputSum = 0;
+
+    for (let i = 0; i < input.length; i++) { 
+      inputSum +=+input[i].value; 
+    } result.value=inputSum; 
+  } </code>
+  </pre>
+    <!-- <pre>
+    <code class="javascript"></code>
+    </pre> -->
+    <br>
+
+    <!-- Task 2 -->
+
+    <div id="task2">
+      <h2 class="title">2. Даны N инпутов с классом .num и кнопка. По нажатию на кнопку получите числа,
+        стоящие в этих
+        инпутах
+        и запишите их сумму в абзац с id="result".</h2>
+
+      <input type="text" name="inputNumber" class="num" value="10">
+      <input type="text" name="inputNumber" class="num" value="11">
+      <input type="text" name="inputNumber" class="num" value="12">
+      <button>Результат</button>
+      <p class="result"></p>
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let num = document.querySelectorAll('#task2 .num');
+  let btn = document.querySelector('#task2 button');
+  let result = document.querySelector('#task2 .result');
+
+
+  btn.addEventListener('click', resBtn);
+
+  function resBtn() {
+    let sum = 0;
+
+
+    for (let i = 0; i < num.length; i++) {
+      sum += +num[i].value;
+    }
+
+    result.innerHTML = sum;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 3 -->
+
+    <div id="task3">
+      <h2 class="title">3. Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого
+        числа.</h2>
+
+      <input type="text" name="inputNumber" class="num">
+      <p class="result">Сумма цифр в инпуте = <span></span></p>
+    </div>
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task3 .num');
+
+  input.addEventListener('blur', count);
+
+  function count() {
+    let sum = 0;
+    let str = input.value;
+    let arr = str.split('');
+
+    for (let i = 0; i < arr.length; i++) {
+      sum += +arr[i];
+    }
+
+    let result = document.querySelector('#task3 .result span');
+    result.innerHTML = sum;
+  }
+    </code>
+    </pre>
+
+    <br>
+
+    <!-- Task 4 -->
+
+    <div id="task4">
+      <h2 class="title">4. Дан инпут. В него вводятся числа через запятую. По потери фокуса найдите
+        среднее
+        арифметическое
+        этих
+        чисел (сумма делить на количество).</h2>
+
+      <input type="text" name="inputNumber" class="num">
+      <p class="result">Среднее арефметическое цифр = <span></span></p>
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task4 .num');
+
+  input.addEventListener('blur', count);
+
+  function count() {
+    let sum = 0;
+    let str = input.value;
+    let arr = str.split(',');
+    for (let i = 0; i < arr.length; i++) {
+      sum += parseInt(arr[i]);
+    }
+
+
+    let average = sum / arr.length;
+
+    let result = document.querySelector('#task4 .result span');
+    result.innerHTML = average;
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 5 -->
+
+    <div id="task5">
+      <h2 class="title">5. Дан инпут. В него вводится ФИО через пробел. По потери фокуса запишите фамилию,
+        имя и
+        отчество в
+        отдельные инпуты.</h2>
+
+      <input type="text" name="fullName" class="num">
+      <input type="text" name="name">
+      <input type="text" name="name">
+      <input type="text" name="name">
+
+    </div>
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task5 input[name=fullName]');
+  let name = document.querySelectorAll('#task5 input[name=name]');
+
+  input.addEventListener('blur', splitting);
+
+  function splitting() {
+
+    let arr = input.value.split(' ');
+
+    for (let i = 0, j = 0; i < arr.length, j < name.length; i++, j++) {
+      name[j].value = arr[i];
+    }
+
+  }
+    </code>
+    </pre>
+
+    <br>
+
+    <!-- Task 6 -->
+
+    <div id="task6">
+      <h2 class="title">6. Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы.
+        Сделайте так,
+        чтобы
+        по
+        потери фокуса инпутом, введенные фамилия, имя и отчество автоматически стали записанными с
+        большой буквы (в
+        том же
+        инпуте). </h2>
+
+      <input type="text" name="fullName">
+
+
+    </div>
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task6 input[name=fullName]');
+
+  input.addEventListener('blur', capitalLetter);
+
+  // берет строку, разбивает слова на массивы, делает первую букву слов заглавной, возвразает обратно строку
+  function firstBigLetter(str) {
+    let arr = str.split(' ');
+
+    for (let i = 0; i < arr.length; i++) {
+      arr[i] = arr[i].slice(0, 1).toUpperCase() + arr[i].slice(1);
+    }
+    str = arr.join(' ');
+    return str;
+  }
+
+  // строка в инпуте выполняет предыдущую функцию - делает первые буквы заглавными
+  function capitalLetter() {
+    input.value = firstBigLetter(input.value);
+  }
+    </code>
+    </pre>
+
+    <br>
+
+    <!-- Task 7 -->
+
+    <div id="task7">
+      <h2 class="title">7. Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в
+        этом тексте.
+      </h2>
+
+      <input type="text" name="text">
+      <p class="result">Слов в инпуте = <span></span></p>
+
+    </div>
+    <pre>
+    <code class="javascript">
+  let input = document.querySelector('#task7 input[name=text]');
+
+  input.addEventListener('blur', countLetter);
+
+  function countLetter() {
+  let num = 0;
+  let arr = input.value.split(' ');
+  for (let i = 0; i < arr.length; i++) { num++ } let result=document.querySelector('#task7 .result span');
+    result.innerHTML=num; }
+  </code>
+</pre> <br>
+
+    <!-- Task 8 -->
+
+    <div id="task8">
+      <h2 class="title">8. Дан инпут. В него вводится текст. По потери фокуса узнайте количество символов
+        в самом
+        длинном
+        слове в этом тексте. </h2>
+
+      <input type="text" name="symbols">
+      <p class="result">В самом длинном слове символов = <span></span></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task8 input[name=symbols]');
+
+  input.addEventListener('blur', quantitySymbols);
+
+  function quantitySymbols() {
+    let arr = input.value.split(' ');
+    let max = 0;
+    let arr2 = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      let num = 0;
+
+      arr2 = arr[i].split('');
+      for (let j = 0; j < arr2.length; j++) {
+        num++;
+      }
+      if (num > max) {
+        max = num;
+      }
+    }
+
+    let result = document.querySelector('#task8 .result span');
+    result.innerHTML = max;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 9 -->
+
+    <div id="task9">
+      <h2 class="title">9. Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом
+        же инпуте
+        поставьте
+        эту дату в формате 2016-12-31.</h2>
+
+      <input type="text" name="data" placeholder="31.12.2016">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task9 input[name=data]');
+
+  input.addEventListener('blur', changeData);
+
+  function reverseData(data, arr2 = []) {
+
+    let arr = data.split('.');
+    arr2 = arr.reverse();
+
+    data = arr2.join('-');
+    return data;
+
+  }
+
+  function changeData() {
+    input.value = reverseData(input.value);
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 10 -->
+
+    <div id="task10">
+      <h2 class="title">10. Дан инпут. В него вводится год рождения пользователя. По нажатию на кнопку
+        выведите в
+        абзац ниже
+        сколько пользователю лет.</h2>
+
+      <input type="text" name="data" placeholder="Введите год рождения">
+      <button>Узнать</button>
+      <p class="result">Возраст пользователя = <span></span></p>
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task10 input[name=data]');
+  let btn = document.querySelector('#task10 button');
+  let result = document.querySelector('#task10 .result span');
+
+  btn.addEventListener('click', countAge);
+
+  function countAge() {
+    let year = input.value;
+    let date = new Date();
+    let yearNow = date.getFullYear();
+    result.innerHTML = yearNow - year;
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 11 -->
+
+    <div id="task11">
+      <h2 class="title">11. Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте
+        день недели
+        (словом), который приходится на эту дату.</h2>
+
+      <input type="text" name="date" placeholder="Дата в формате 31.12.2016">
+      <p class="result">День недели = <span></span></p>
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task11 input[name=date]');
+  let result = document.querySelector('#task11 .result span');
+
+  input.addEventListener('blur', dayOfTheWeek);
+
+  function dayOfTheWeek() {
+    let week = [
+      'Воскресенье',
+      'Понедельник',
+      'Вторник',
+      'Среда',
+      'Четверг',
+      'Пятница',
+      'Суббота'
+    ];
+
+    let arr = input.value.split('.');
+    let reverseArr = arr.reverse();
+    let strDate = reverseArr.join(',');
+    let date = new Date(strDate);
+    let day = date.getDay();
+
+    result.innerHTML = week[day];
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 12 -->
+
+    <div id="task12">
+      <h2 class="title">12. Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это
+        слово
+        читается с
+        начала и с конца одинаково (например, мадам).</h2>
+
+      <input type="text" name="mirror" placeholder="мадам">
+      <button>Узнать</button>
+      <p class="result">Зеркально ли слово? - <span></span></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task12 input[name=mirror]');
+  let result = document.querySelector('#task12 .result span');
+  let btn = document.querySelector('#task12 button');
+
+  btn.addEventListener('click', mirrorWord);
+
+  function mirrorWord() {
+
+    let arr = input.value.split('');
+    let arr2 = input.value.split('').reverse();
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] !== arr2[i]) {
+        result.innerHTML = 'НЕТ';
+      }
+      else {
+        result.innerHTML = 'ДА';
+      }
+    }
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 13 -->
+
+    <div id="task13">
+      <h2 class="title">13. Дан инпут. В него вводится число. Проверьте по вводу, что это число содержит
+        внутри себя
+        цифру
+        3</h2>
+
+      <input type="text" name="number" placeholder="Введите число">
+      <p class="result">Слдержит цифру 3? - <span></span></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task13 input[name=number]');
+  let result = document.querySelector('#task13 .result span');
+
+  input.addEventListener('blur', hasThree);
+
+  function hasThree() {
+    let arr = input.value.split('');
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === '3') {
+        return result.innerHTML = 'Содержит';
+
+      }
+    }
+
+    return result.innerHTML = 'Не содержит';
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 14 -->
+
+    <div id="task14">
+      <h2 class="title">14. Даны N абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца
+        его
+        порядковый
+        номер.</h2>
+
+      <p>Абзац №</p>
+      <p>Абзац №</p>
+      <p>Абзац №</p>
+      <p>Абзац №</p>
+      <p>Абзац №</p>
+
+      <button>Добавить порядковый номер</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelectorAll('#task14 p');
+  let btn = document.querySelector('#task14 button');
+
+  btn.addEventListener('click', pNumber);
+
+  function pNumber() {
+    for (let i = 0; i < paragraph.length; i++) {
+
+      paragraph[i].innerHTML = paragraph[i].innerHTML + ' ' + (i + 1);
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 15 -->
+
+    <div id="task15">
+      <h2 class="title">15. Даны N абзацев с числами. По нажатию на кнопку выведите эти числа в инпут
+        через запятую в
+        порядке возрастания.</h2>
+
+      <p>8787</p>
+      <p>66</p>
+      <p>9879</p>
+      <p>2345</p>
+      <p>9898</p>
+
+      <button>Вывести числа</button>
+      <input type="text" name="numbers">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelectorAll('#task15 p');
+  let btn = document.querySelector('#task15 button');
+  let input = document.querySelector('#task15 input[name=numbers]');
+
+  btn.addEventListener('click', rase);
+
+  function rase() {
+
+    let arr = [];
+
+    for (let i = 0; i < paragraph.length; i++) {
+      arr[i] = paragraph[i].innerHTML;
+    }
+
+    input.value = arr.sort(sortArr).join(',');
+  }
+
+  function sortArr(a, b) {
+    return a - b;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 16 -->
+
+    <div id="task16">
+      <h2 class="title">16. Даны ссылки. По загрузке страницы добавьте в конец каждой ссылки ее href в
+        круглых
+        скобках.</h2>
+
+      <a href="111">Ссылка с href = </a>
+      <a href="222">Ссылка с href = </a>
+      <a href="333">Ссылка с href = </a>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let link = document.querySelectorAll('#task16 a');
+
+  start();
+
+  function start() {
+    for (let i = 0; i < link.length; i++) {
+      link[i].innerHTML = link[i].innerHTML + `(${link[i].href})`;
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 17 -->
+
+    <div id="task17">
+      <h2 class="title">17. Даны ссылки. По загрузке страницы, если ссылка начинается с http://, то
+        добавьте ей в
+        конец
+        стрелку → </h2>
+
+      <a href="http://111">Ссылка с http:// </a>
+      <a href="http://222">Ссылка с http:// </a>
+      <a href="333">Ссылка НЕ с http:// </a>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let link = document.querySelectorAll('#task17 a');
+
+      arrowLast();
+    
+      function arrowLast() {
+    
+        for (let i = 0; i < link.length; i++) {
+          if (link[i].href.indexOf('http://') === 0) {
+            link[i].innerHTML = link[i].innerHTML + '&rarr;';
+          }
+        }
+    
+      }
+
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 18 -->
+
+    <div id="task18">
+      <h2 class="title">18. Даны N абзацев с числами. По нажатию на любой абзац запишите в него квадрат
+        числа, которое
+        в нем
+        находится. </h2>
+
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelectorAll('#task18 p');
+
+  for (let i = 0; i < paragraph.length; i++) {
+    paragraph[i].addEventListener('click', func);
+  }
+
+  function func() {
+    this.innerHTML = this.innerHTML * this.innerHTML;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 19 -->
+
+    <div id="task19">
+      <h2 class="title">19. Даны N абзацев с числами. По нажатию на любой абзац запишите в него квадрат
+        числа, которое
+        в нем
+        находится. </h2>
+
+      <img src="img/1.png" width="130" height="130" alt="img">
+      <img src="img/2.png" width="130" height="130" alt="img">
+      <img src="img/3.png" width="130" height="130" alt="img">
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let img = document.querySelectorAll('#task19 img');
+
+  for (let i = 0; i < img.length; i++) {
+    img[i].addEventListener('click', raseImg);
+  }
+
+  function raseImg() {
+    this.height = this.height * 2;
+    this.width = this.width * 2;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 20 -->
+
+    <div id="task20">
+      <h2 class="title">20. Даны картинки. По первому нажатию на любую картинку увеличьте ее в 2 раза. По
+        второму
+        нажатию -
+        уменьшите обратно. </h2>
+
+      <img src="img/1.png" width="130" height="130" alt="img">
+      <img src="img/2.png" width="130" height="130" alt="img">
+      <img src="img/3.png" width="130" height="130" alt="img">
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let img = document.querySelectorAll('#task20 img');
+
+  for (let i = 0; i < img.length; i++) {
+    img[i].addEventListener('click', riseToggleImg);
+  }
+
+  function riseToggleImg() {
+    this.height = this.height * 2;
+    this.width = this.width * 2;
+    this.removeEventListener('click', riseToggleImg);
+    this.addEventListener('click', reRiseToggleImg);
+  }
+
+  function reRiseToggleImg() {
+    this.height = this.height / 2;
+    this.width = this.width / 2;
+    this.removeEventListener('click', reRiseToggleImg);
+    this.addEventListener('click', riseToggleImg);
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 21 -->
+
+    <div id="task21">
+      <h2 class="title">21. Даны N картинок размера 30px. По нажатию на картинку под ними эта картинка
+        появляется
+        размером в
+        50px.</h2>
+
+      <img src="img/1.png" style="height: 30px;" alt="img" class="smallImg">
+      <img src="img/2.png" style="height: 30px;" alt="img" class="smallImg">
+      <img src="img/3.png" style="height: 30px;" alt="img" class="smallImg">
+      <img src="img/1.png" class="newImg" style="height: 50px; display: block;" alt="imgBig">
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let img = document.querySelectorAll('#task21 .smallImg');
+  let newImg = document.querySelector('#task21 .newImg');
+
+  for (let i = 0; i < img.length; i++) {
+    img[i].addEventListener('click', resizeImg);
+  }
+
+  function resizeImg() {
+    newImg.src = this.src;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 22 -->
+
+    <div id="task22">
+      <h2 class="title">22. Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать
+        на 1
+        значение
+        инпута. Сделайте так, чтобы это значение не могло стать меньше нуля.</h2>
+
+      <input type="text" name="input" value="0">
+      <input type="submit" name="changeValue" value="+1">
+      <input type="submit" name="changeValue" value="-1">
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task22 input[name=input]');
+  let changeValue = document.querySelectorAll('#task22 input[name=changeValue]');
+
+  for (let i = 0; i < changeValue.length; i++) {
+    changeValue[i].addEventListener('click', func);
+  }
+
+  function func() {
+    let sum = +input.value + +this.value;
+    if (sum >= input.value) {
+      input.value = sum;
+    } else {
+      input.value = 0;
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 23 -->
+
+    <div id="task23">
+      <h2 class="title">23. Дан инпут. В него вводится число. По потери фокуса проверьте, что в нем лежит
+        число от 1
+        до 100.
+        Если это так - покрасьте инпут в зеленый цвет, а если не так - в красный.</h2>
+
+      <input type="text" name="number" value="21">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task23 input[name=number]');
+
+  input.addEventListener('blur', checkNumber);
+
+  function checkNumber() {
+    if (this.value >= 1 && this.value <= 100) {
+      this.style.border = '2px solid green';
+    } else {
+      this.style.border = '2px solid red';
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 24 -->
+
+    <div id="task24">
+      <h2 class="title">24. Дан инпут. Выделите любой текст на странице. По окончанию выделения этот текст
+        должен
+        записаться
+        в этот инпут.</h2>
+
+      <input type="text" name="anyText">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task24 input[name=anyText]');
+
+  document.documentElement.addEventListener('mouseup', func);
+
+  function func() {
+    let content = window.getSelection().toString();
+    input.value = content;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 25 -->
+
+    <div id="task25">
+      <h2 class="title">25. Даны абзацы с числами. По нажатию на кнопку найдите абзац, в котором хранится
+        максимальное
+        число, и сделайте его красного цвета.</h2>
+
+      <p>645</p>
+      <p>587</p>
+      <p>5</p>
+      <p>599</p>
+      <p>59</p>
+
+      <button>Самое большое число</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let numbers = document.querySelectorAll('#task25 p');
+  let btn = document.querySelector('#task25 button');
+
+  btn.addEventListener('click', compare);
+
+  function compare() {
+    let newNumbers = [];
+    for (let i = 0; i < numbers.length; i++) {
+      newNumbers[i] = numbers[i].innerHTML;
+
+    }
+    let sortNewNumbers = newNumbers.sort(mySort);
+    let number = sortNewNumbers[sortNewNumbers.length - 1];
+
+    for (let i = 0; i < sortNewNumbers.length; i++) {
+      if (numbers[i].innerHTML === number) {
+        numbers[i] = numbers[i].style.color = 'red';
+      }
+
+    }
+
+  }
+
+
+  function mySort(a, b) {
+    return a - b;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 26 -->
+
+    <div id="task26">
+      <h2 class="title">26. Дан инпут. Даны абзацы. Пусть в этот инпут записывается суммарное количество
+        нажатий по
+        этим
+        абзацам.</h2>
+
+      <p>Абзац 1</p>
+      <p>Абзац 2</p>
+      <p>Абзац 3</p>
+      <p>Абзац 4</p>
+      <p>Абзац 5</p>
+
+
+      <input type="text" name="result">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelectorAll('#task26 p');
+  let input = document.querySelector('#task26 input[name=result]');
+
+  for (let i = 0; i < paragraph.length; i++) {
+    paragraph[i].addEventListener('click', func);
+  }
+
+  let count = 0;
+
+  function func() {
+    count++;
+    input.value = count;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 27 -->
+
+    <div id="task27">
+      <h2 class="title">27. Дан инпут с числом. Сделайте так, чтобы каждую секунду в нем появлялся квадрат
+        того числа,
+        которое в нем записано.</h2>
+
+      <input type="text" name="result" value="2">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task27 input[name=result]');
+
+  start();
+
+  function start() {
+    window.setInterval(timer, 1000);
+  }
+
+  function timer() {
+    input.value = input.value * input.value;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 28 -->
+
+    <div id="task28">
+      <h2 class="title">28. Дан инпут и кнопка. По нажатию на кнопку сгенерируйте случайную строку из 8-ми
+        символов и
+        запишите в инпут.</h2>
+
+      <input type="text" name="randomStr">
+      <button>Сгенерировать</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task28 input[name=randomStr]');
+  let btn = document.querySelector('#task28 button');
+
+  btn.addEventListener('click', random);
+
+  function random() {
+    let str = '';
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 8; i++) {
+      str += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    input.value = str;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 29 -->
+
+    <div id="task29">
+      <h2 class="title">29. Модифицируйте предыдущую задачу так, чтобы был еще один инпут, в котором
+        задается длина
+        случайной строки.</h2>
+
+      <input type="text" name="length" placeholder="Введите длину случайной строки">
+      <button>Сгенерировать</button>
+      <input type="text" name="randomStr" style="display: block; margin-top: 15px;">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let inputLength = document.querySelector('#task29 input[name=length]');
+  let input = document.querySelector('#task29 input[name=randomStr]');
+  let btn = document.querySelector('#task29 button');
+
+  btn.addEventListener('click', random);
+
+  function random() {
+    let str = '';
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < inputLength.value; i++) {
+      str += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    input.value = str;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 30 -->
+
+    <div id="task30">
+      <h2 class="title">30. Модифицируйте предыдущую задачу так, чтобы был еще один инпут, в котором
+        задаются символы,
+        из
+        которых формируется эта случайна строка. Символы задаются без всяких разделитетей, в одну
+        строку.</h2>
+
+      <input type="text" name="length" placeholder="Введите длину случайной строки">
+      <input type="text" name="symbol" placeholder="Символы без пробелов">
+      <button>Сгенерировать</button>
+      <input type="text" name="randomStr" style="display: block; margin-top: 15px;">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let inputLength = document.querySelector('#task30 input[name=length]');
+  let inputSymbol = document.querySelector('#task30 input[name=symbol]');
+  let input = document.querySelector('#task30 input[name=randomStr]');
+  let btn = document.querySelector('#task30 button');
+
+  btn.addEventListener('click', random);
+
+  function random() {
+    let str = '';
+    let possible = inputSymbol.value;
+
+    for (let i = 0; i < inputLength.value; i++) {
+      str += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    input.value = str;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 31 -->
+
+    <div id="task31">
+      <h2 class="title">31. Дан абзац. Сделайте так, чтобы каждую секунду он менял свой цвет с красного на
+        зеленый и
+        наоборот.</h2>
+
+      <p>Абзац изменяющий цвет каждую секунду</p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelector('#task31 p');
+
+  start();
+
+  function start() {
+    window.setInterval(blink, 1000);
+  }
+
+  function blink() {
+
+
+    if (paragraph.style.color === 'red') {
+      paragraph.style.color = 'green';
+    } else {
+      paragraph.style.color = 'red'
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 32 -->
+
+    <div id="task32">
+      <h2 class="title">32. Дан инпут. В него вводится число. По потери фокуса сделайте так, чтобы в
+        абзаце ниже начал
+        тикать обратный отсчет, начиная с введенного числа. Когда отсчет дойдет до нуля - он должен
+        закончится.</h2>
+
+      <input type="text" name="number">
+      <p></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task32 input[name=number');
+  let result = document.querySelector('#task32 p');
+
+  input.addEventListener('blur', func);
+
+  function func() {
+    window.funcId = window.setInterval(go, 1000);
+  }
+
+
+  function go() {
+    result.innerHTML = input.value;
+
+    if (parseInt(result.innerHTML) > 0) {
+      result.innerHTML--;
+    }
+    if (parseInt(result.innerHTML) === 0) {
+      stop();
+    }
+  }
+
+  function stop() {
+    window.clearInterval(window.funcId);
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 33 -->
+
+    <div id="task33">
+      <h2 class="title">33. Дан абзац. Дан массив цветов ['red', 'green', 'blue']. Сделайте так, чтобы
+        каждую секунду
+        абзац
+        менял свой цвет на определенное значение их массива: сначала 'red', потом 'green' и так далее.
+        Как только
+        цвета в
+        массиве закончатся - все начнется сначала. Количество цветов в массиве может быть любым. </h2>
+
+      <p>Абзац меняющий цвет, цвета берет из массива</p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let result = document.querySelector('#task33 p');
+
+  let colors = ['red', 'blue', 'grey', 'orange', 'green'];
+
+  window.setInterval(changeColor, 1000);
+  let i = 0;
+
+  function changeColor() {
+    result.style.color = colors[i];
+    i++;
+    if (i >= colors.length) i = 0;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 34 -->
+
+    <div id="task34">
+      <h2 class="title">34. Дан абзац. Дан массив строк ['один', 'два', 'три']. Под абзацем ссылка
+        'следующая строка'.
+        По
+        заходу на страницу в абзаце должен стоять нулевой элемент этого массива, а по нажатию на ссылку
+        - вставлятся
+        следующий элемент. </h2>
+
+      <p></p>
+      <a href="#">Следующая строка</a>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelector('#task34 p');
+  let link = document.querySelector('#task34 a');
+  let strArr = ['один', 'два', 'три', 'четыре', 'пять'];
+  let i = 1;
+  link.addEventListener('click', changeParagraph);
+
+  paragraph.innerHTML = strArr[0];
+
+  function changeParagraph(event) {
+    event.preventDefault();
+
+    paragraph.innerHTML = strArr[i];
+    i++;
+
+
+    if (i >= strArr.length) i = 0;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 35 -->
+
+    <div id="task35">
+      <h2 class="title">35. Даны инпуты с числами. Произвольное количетсво, пусть три. В первый инпут
+        запишите 1,
+        через
+        секунду во второй инпут запишите 2, еще через секунду в третий инпут 3, потом через секунду в
+        первый инпут
+        запишите
+        4, во второй 5 и так далее до бесконечности.</h2>
+
+      <input type="text" value="">
+      <input type="text" value="">
+      <input type="text" value="">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelectorAll('#task35 input');
+  let num = 1,
+    i = 0;
+
+  window.setInterval(valueInputs, 1000);
+
+  function valueInputs() {
+
+    input[i].value = num;
+    num++;
+    i++;
+    if (i >= input.length) i = 0;
+
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 36 -->
+
+    <div id="task36">
+      <h2 class="title">36. Дана ссылка. Дан чекбокс. По нажатию на ссылку меняйте состояние чекбокса с
+        отмеченного на
+        неотмеченное и наоборот.</h2>
+
+      <input type="checkbox">
+      <a href="#" style="display: inline;">Изменение чекбокса</a>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let link = document.querySelector('#task36 a');
+  let checkbox = document.querySelector('#task36 input');
+
+  link.addEventListener('click', check);
+
+  function check(event) {
+    event.preventDefault();
+    if (checkbox.checked) {
+      checkbox.checked = false;
+    }
+    else {
+      checkbox.checked = true;
+    }
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 37 -->
+
+    <div id="task37">
+      <h2 class="title">37. Даны чекбокс. Дана кнопка. По нажатию на кнопку сделайте все чекбоксы
+        отмеченными.</h2>
+
+      <input type="checkbox">
+      <input type="checkbox">
+      <input type="checkbox">
+      <input type="checkbox">
+
+      <button>Отметить все чекбоксы</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let checkboxes = document.querySelectorAll('#task37 input');
+  let btn = document.querySelector('#task37 button');
+
+  btn.addEventListener('click', checkAll);
+
+  function checkAll() {
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = true;
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 38 -->
+
+    <div id="task38">
+      <h2 class="title">38. Спросите у пользователя какой язык (html, css, js, php) он знает с помощью
+        радио кнопочек.
+        Выведите этот язык в абзац.</h2>
+
+      <p>Какой язык программирования вы знаете?</p>
+
+      <input type="radio" value="html">html
+      <input type="radio" value="css">css
+      <input type="radio" value="js">js
+      <input type="radio" value="php">php
+
+      <p>Вы знаете: <span></span></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let radios = document.querySelectorAll('#task38 input');
+  let result = document.querySelector('#task38 p span');
+
+  for (let i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', func);
+  }
+
+  function func() {
+    result.innerHTML = this.value;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 39 -->
+
+    <div id="task39">
+      <h2 class="title">39. Спросите у пользователя какие языки (html, css, js, php) он знает с помощью
+        чекбоксов.
+        Выбранные
+        языки должны выводится в абзац ниже через запятую.</h2>
+
+      <p>Какой язык программирования вы знаете?</p>
+
+      <input type="checkbox" value="html">html
+      <input type="checkbox" value="css">css
+      <input type="checkbox" value="js">js
+      <input type="checkbox" value="php">php
+
+      <p>Вы знаете: <span></span></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let checkboxes = document.querySelectorAll('#task39 input');
+  let result = document.querySelector('#task39 p span');
+  let arr = [];
+
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('change', func);
+  }
+
+  function func() {
+    if (this.checked) {
+      arr.push(this.value);
+      result.innerHTML = arr;
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 40 -->
+
+    <div id="task40">
+      <h2 class="title">40. Дан чекбокс. Дан инпут. Сделайте так, что если чекбокс отмечен - инпут
+        видимый, если не
+        отмечен
+        - не видимый.</h2>
+
+      <p>Какой язык программирования вы знаете?</p>
+
+      <input type="checkbox" name="check" checked>
+      <input type="text" name="text" placeholder="Видимый/Невидимый">
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let checkbox = document.querySelector('#task40 input[name=check]');
+  let input = document.querySelector('#task40 input[name=text]');
+
+
+  checkbox.addEventListener('change', func);
+
+  function func() {
+    if (!checkbox.checked) {
+      input.style.display = 'none';
+    }
+    else {
+      input.style.display = 'inline';
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 41 -->
+
+    <div id="task41">
+      <h2 class="title">41. Даны чекбоксы. Под каждым чекбоксом размещен абзац. Сделайте так, что если
+        чекбокс отмечен
+        -
+        соответствующий абзац видимый, а если не отмечен - не видимый.</h2>
+
+
+      <input type="checkbox" name="check" checked>
+      <p style="display: inline;">Абзац видимый или невидимый</p>
+
+      <br>
+
+      <input type="checkbox" name="check">
+      <p style="display: inline;">Абзац видимый или невидимый</p>
+
+      <br>
+
+      <input type="checkbox" name="check" checked>
+      <p style="display: inline;">Абзац видимый или невидимый</p>
+
+      <br>
+
+      <input type="checkbox" name="check">
+      <p style="display: inline;">Абзац видимый или невидимый</p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let checkbox = document.querySelectorAll('#task41 input');
+
+  for (let i = 0; i < checkbox.length; i++) {
+    checkbox[i].addEventListener('change', func);
+
+    if (!checkbox[i].checked) {
+      checkbox[i].nextElementSibling.style.display = 'none';
+    }
+
+  }
+
+  function func() {
+
+    if (!this.checked) {
+      this.nextElementSibling.style.display = 'none';
+    } else {
+      this.nextElementSibling.style.display = 'inline';
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 42 -->
+
+    <div id="task42">
+      <h2 class="title">42. Дан инпут. Даны li. В инпут пишется номер. Сделайте так, чтобы по вводу числа,
+        li с
+        заданным
+        номером покрасился в красный цвет.</h2>
+
+      <input type="text">
+
+      <ol>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ol>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task42 input');
+  let li = document.querySelectorAll('#task42 li');
+
+  input.addEventListener('change', func);
+  let n = 0;
+
+  function func() {
+    n = this.value;
+    li[n - 1].style.color = 'red';
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 43 -->
+
+    <div id="task43">
+      <h2 class="title">43. Дан абзац. Даны чекбоксы 'перечеркнуть', 'сделать жирным', 'сделать красным'.
+        Если
+        соответствующий чекбокс отмечен - заданное действие происходит с абзацем (становится красным,
+        например).
+        Если
+        чекбоксу снять отметку - действие отменяется.</h2>
+
+      <p>Абзац</p>
+
+      <input type="checkbox" value="text-decoration:line-through">Перечеркнуть
+      <input type="checkbox" value="font-weight:bold">Сделать жирным
+      <input type="checkbox" value="color:red">Сделать красным
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let paragraph = document.querySelector('#task43 p');
+  let checkboxes = document.querySelectorAll('#task43 input');
+
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('change', changeP);
+  }
+
+  function changeP() {
+    if (this.checked) {
+      paragraph.style.cssText += this.value;
+    }
+    else {
+      paragraph.style.cssText = 'none';
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 44 -->
+
+    <div id="task44">
+      <h2 class="title">44. Дан блок с кнопкой 'закрыть блок'. По нажатию на эту кнопку блок должен
+        исчезнуть. Кнопка
+        размещается внутри блока и должна исчезнуть вместе с ним. Блоков может быть любое количество,
+        каждый из них
+        закрывает своя кнопка.</h2>
+
+      <div>
+        <p>По нажатию на эту кнопку</p>
+        <button>Закрыть</button>
+      </div>
+
+      <div>
+        <p>По нажатию на эту кнопку</p>
+        <button>Закрыть</button>
+      </div>
+
+      <div>
+        <p>По нажатию на эту кнопку</p>
+        <button>Закрыть</button>
+      </div>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let btn = document.querySelectorAll('#task44 button');
+
+  for (let i = 0; i < btn.length; i++) {
+    btn[i].addEventListener('click', func);
+  }
+
+  function func() {
+    this.parentElement.style.display = 'none';
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 45 -->
+
+    <div id="task45">
+      <h2 class="title">45. В инпут через запятую вводятся страны. По нажатию на кнопку сделайте так,
+        чтобы эти страны
+        записались в ul под инпутом (каждая страна отдельный li).</h2>
+
+      <input type="text" name="country" placeholder="Страны через запятую">
+      <button>Создать список стран</button>
+      <ul></ul>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task45 input[name=country]');
+  let btn = document.querySelector('#task45 button');
+  let ul = document.querySelector('#task45 ul');
+
+  btn.addEventListener('click', separation);
+
+  function separation() {
+    let arrCountry = input.value.split(',');
+    for (let i = 0; i < arrCountry.length; i++) {
+      let li = document.createElement('li');
+      li.innerHTML = arrCountry[i];
+      ul.appendChild(li);
+
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 46 -->
+
+    <div id="task46">
+      <h2 class="title">46. В инпут вводится страна и нажимается Enter. По нажатию на Enter сделайте так,
+        чтобы
+        введенные
+        страны записывались в абзац под инпутом через запятую. То есть по каждому нажатию Enter в абзац
+        будут
+        добавляться
+        все новые и новые страны.</h2>
+
+      <input type="text" name="country" placeholder="Введите страну и нажмите Enter">
+      <p></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let input = document.querySelector('#task46 input[name=country]');
+  let paragraph = document.querySelector('#task46 p');
+
+  input.addEventListener('keypress', countriesList);
+
+  function countriesList(event) {
+    if (event.which === 13) {
+      paragraph.innerHTML += input.value + ', ';
+    }
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 47 -->
+
+    <div id="task47">
+      <h2 class="title">47. На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот
+        текст, который в
+        них
+        стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста
+      </h2>
+
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis numquam sequi sunt. Aspernatur
+        officiis
+        pariatur
+        repellat.
+      </div>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis numquam sequi sunt. Aspernatur
+        officiis
+        pariatur
+        repellat.
+      </div>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis numquam sequi sunt. Aspernatur
+        officiis
+        pariatur
+        repellat.
+      </div>
+
+      <button>Обрезать</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let div = document.querySelectorAll('#task47 div');
+  let btn = document.querySelector('#task47 button');
+
+  btn.addEventListener('click', cut);
+
+  function cut() {
+
+    for (let i = 0; i < div.length; i++) {
+      div[i].innerHTML = div[i].innerHTML.slice(0, 10) + '...';
+    }
+
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 48 -->
+
+    <div id="task48">
+      <h2 class="title">48. Дана таблица с числами. По нажатию на кнопку найдите ячейку, в которой
+        хранится
+        максимальное
+        число, и сделайте ее фон красным.</h2>
+
+
+      <table>
+        <tr>
+          <td>25</td>
+          <td>11</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>13</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>23</td>
+          <td>6</td>
+        </tr>
+      </table>
+
+      <button>Жми</button>
+
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let td = document.querySelectorAll('#task48 td');
+  let btn = document.querySelector('#task48 button');
+
+  btn.addEventListener('click', func);
+
+  let max = '';
+  let n = 0;
+
+  function func() {
+    for (let i = 0; i < td.length; i++) {
+      if (+td[i].innerHTML > max) {
+        max = +td[i].innerHTML;
+        n = i;
+      }
+    }
+    td[n].style.backgroundColor = 'red';
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 49 -->
+
+    <div id="task49">
+      <h2 class="title">49. Дана таблица с числами. По нажатию на кнопку найдите ячейку, в которой
+        хранится
+        максимальное
+        число, и сделайте ее фон красным.</h2>
+
+
+      <table>
+        <tr>
+          <td>25</td>
+          <td>11</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>13</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>23</td>
+          <td>6</td>
+        </tr>
+      </table>
+
+      <button>Жми</button>
+
+      <input type="text">
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let td = document.querySelectorAll('#task49 td');
+  let btn = document.querySelector('#task49 button');
+  let input = document.querySelector('#task49 input');
+
+  btn.addEventListener('click', func);
+
+  function func() {
+
+    let arr = [];
+
+    for (let i = 0; i < td.length; i++) {
+      arr.push(td[i].innerHTML);
+    }
+
+    arr.sort(mySort);
+    input.value = arr.join(', ');
+
+  }
+
+  function mySort(a, b) {
+    return a - b;
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 50 -->
+
+    <div id="task50">
+      <h2 class="title">50. Дана таблица с числами. По нажатию на кнопку в последний ряд таблицы в каждую
+        ячейку
+        запишите
+        сумму чисел в столбце таблицы, расположенном над определенной ячейкой.</h2>
+
+
+      <table>
+        <tr>
+          <td>25</td>
+          <td>11</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>13</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>23</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <button>Жми</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let tr = document.querySelectorAll('#task50 tr');
+      let btn = document.querySelector('#task50 button');
+    
+      btn.addEventListener('click', func);
+    
+      function func() {
+        let arr = [];
+    
+        for (let i = 0; i < tr.length - 1; i++) {
+          for (let j = 0; j < tr[i].children.length; j++) {
+            if (arr[j] === undefined) arr[j] = 0;
+            arr[j] += Number(tr[i].children[j].innerHTML);
+          }
+        }
+    
+        for (let k = 0; k < tr[tr.length - 1].children.length; k++) {
+          tr[tr.length - 1].children[k].innerHTML = arr[k];
+        }
+      }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 51 -->
+
+    <div id="task51">
+      <h2 class="title">51. Дана таблица с числами. По нажатию на ячейку она активируется и становится
+        красного цвета.
+        Активировать можно много ячеек. Под таблицей кнопка. По нажатию по этой кнопке в абзац ниже
+        выведите сумма
+        активированных ячеек. Реализуйте кнопку 'сбросить активированные ячейки'.</h2>
+
+      <table>
+        <tr>
+          <td>25</td>
+          <td>11</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>13</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>23</td>
+          <td>6</td>
+        </tr>
+      </table>
+
+      <button class="go">Количество красных</button>
+      <p>Активированных ячеек - <span></span></p>
+      <button class="clear">Очистить</button>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let td = document.querySelectorAll('#task51 td');
+  let btnGo = document.querySelector('#task51 .go');
+  let btnClear = document.querySelector('#task51 .clear');
+  let result = document.querySelector('#task51 p span');
+
+  for (let i = 0; i < td.length; i++) {
+    td[i].addEventListener('click', function () {
+      this.classList.add('red');
+    })
+  }
+
+  btnGo.addEventListener('click', function () {
+    let active = document.querySelectorAll('#task51 .red');
+    let sum = 0;
+    for (let i = 0; i < active.length; i++) {
+      sum += Number(active[i].innerHTML);
+    }
+    result.innerHTML = sum;
+  });
+
+  btnClear.addEventListener('click', function () {
+    let active = document.querySelectorAll('#task51 .red');
+    for (let i = 0; i < active.length; i++) {
+      active[i].classList = [];
+    }
+  })
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 52 -->
+
+    <div id="task52">
+      <h2 class="title">52. Дана таблица. По нажатию на ячейку в ней появляется инпут с содержимым этой
+        ячейки и
+        кнопка
+        сохранить. Можно поредактировать текст в инпуте, сохранить - и текст ячейки поменяется.</h2>
+
+      <table>
+        <tr>
+          <td>25</td>
+          <td>11</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>13</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>23</td>
+          <td>6</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let td = document.querySelectorAll('#task52 td');
+  for (let i = 0; i < td.length; i++) {
+    td[i].addEventListener('click', function () {
+      let newValue = this.innerHTML;
+      this.style.display = 'none';
+
+      let newInput = document.createElement('input');
+      newInput.value = newValue;
+
+      newInput.addEventListener('change', function () {
+        this.previousElementSibling.innerHTML = this.value;
+        this.previousElementSibling.style.display = '';
+        this.parentElement.removeChild(this);
+      });
+      this.parentElement.insertBefore(newInput, this.nextSibling);
+    });
+  }
+    </code>
+    </pre>
+    <br>
+
+    <!-- Task 53 -->
+
+    <div id="task53">
+      <h2 class="title">53. Реализуйте раскрывающийся список. По умолчанию есть список стран (ul), по
+        нажатию на
+        страну
+        внутри li со страной появляется список городов.</h2>
+
+      <ul>
+        <li>
+          <p style="cursor: pointer;">Россия</p>
+          <ul style="display: none;">
+            <li>Город 1</li>
+            <li>Город 2</li>
+            <li>Город 3</li>
+            <li>Город 4</li>
+          </ul>
+        </li>
+
+        <li>
+          <p style="cursor: pointer;">Украина</p>
+          <ul style="display: none;">
+            <li>Город 1</li>
+            <li>Город 2</li>
+            <li>Город 3</li>
+            <li>Город 4</li>
+          </ul>
+        </li>
+      </ul>
+      <pre>
+      <code class="javascript">
+        let paragraph = document.querySelectorAll('#task53 p');
+
+        for (let i = 0; i < paragraph.length; i++) {
+          paragraph[i].addEventListener('click', show);
+        }
+      
+        function show() {
+          this.nextElementSibling.style.display = 'block';
+          removeEventListener('click', show);
+          this.addEventListener('click', hide);
+      
+        }
+      
+        function hide() {
+          this.nextElementSibling.style.display = 'none';
+          removeEventListener('click', hide);
+          this.addEventListener('click', show);
+        }
+  </code>
+</pre>
+
+    </div>
+
+    <!-- Task 54 -->
+
+    <div id="task54">
+      <h2 class="title">54. Даны два селекта. В первом находятся страны, во втором - города. Сделайте так,
+        чтобы когда
+        выбирается определенная страна - в другом селекте появлялись города этой страны. В абзац ниже
+        пишите
+        выбранную
+        страну и город через запятую.</h2>
+
+      <select name="country" class="country">
+        <option value="aus">Австралия</option>
+        <option value="jap">Япония</option>
+        <option value="sar">ЮАР</option>
+      </select>
+
+      <select name="cities" class="cities"></select>
+      <p></p>
+
+    </div>
+
+    <pre>
+    <code class="javascript">
+      let cityArr = {
+        'aus': ['Мельбурн', 'Сидней', 'Аделаида', 'Брисбен', 'Хобарт'],
+        'jap': ['Токио', 'Киото', 'Осака', 'Иокогама'],
+        'sar': ['Кейптаун', 'Йоханесбург'],
+      };
+    
+      let countriesSelect = document.querySelector('#task54 .country');
+      countriesSelect.addEventListener('change', toCities);
+      countriesSelect.addEventListener('change', toParagraph);
+    
+      let citiesSelect = document.querySelector('#task54 .cities');
+      citiesSelect.addEventListener('change', toParagraph);
+    
+      function toCities() {
+        citiesSelect.innerHTML = '';
+        let selectedCountry = countriesSelect.value;
+        for (let i = 0; i < cityArr[selectedCountry].length; i++) {
+          let newOption = document.createElement('option');
+          newOption.innerHTML = cityArr[selectedCountry][i];
+          citiesSelect.appendChild(newOption);
+        }
+      }
+    
+      let paragraph = document.querySelector('#task54 p');
+      function toParagraph() {
+        paragraph.innerHTML = '';
+        paragraph.innerHTML = countriesSelect.options[countriesSelect.selectedIndex].text + ','
+          + citiesSelect.options[citiesSelect.selectedIndex].text;
+      }
+    </code>
+    </pre>
+    <br>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
