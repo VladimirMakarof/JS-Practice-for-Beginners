@@ -3,4 +3,4 @@
 
 
 
-[Практика JavaScript для новичков](https://vladimirmakarof.github.io/JavaScript-Practice-for-Beginners/)
+[Практика JavaScript для новичков](https://vladimirmakarof.github.io/JS-Practice-for-Beginners/)
